@@ -1,5 +1,13 @@
 ## Hi there 👋
 
+## Links 🍿
+
+- [Web Site](https://ctlos.github.io)
+- [telegram](https://t.me/ctlos)
+- [discus](https://github.com/ctlos/.github/discussions)
+- [vk.com](https://vk.com/creio)
+- [youtube.com](https://www.youtube.com/c/creioyt)
+
 <!--
 
 **Here are some ideas to get you started:**
