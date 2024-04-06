@@ -1,5 +1,7 @@
 ## Hi there 👋
 
+[Latest Release](https://github.com/ctlos/ctlosiso/tags)
+
 #### Links 🍿
 
 - [Web Site](https://ctlos.github.io)
