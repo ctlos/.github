@@ -1,8 +1,8 @@
 name: Notify Telegram
 
 on:
-  # discussion:
-  #   types: [created, edited, answered]
+  discussion:
+    types: [created, answered]
   discussion_comment:
     types: [created]
 
@@ -10,7 +10,32 @@ jobs:
   tg_alert:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Telegram Notification
+      - name: Determine event type
+        id: event_type
+        run: |
+          if [[ "${{ github.event_name }}" == "discussion" ]]; then
+            echo "::set-output name=type::discussion"
+          elif [[ "${{ github.event_name }}" == "discussion_comment" ]]; then
+            echo "::set-output name=type::discussion_comment"
+          fi
+
+      - name: Send Telegram Notification (Discussion)
+        if: steps.event_type.outputs.type == 'discussion'
+        uses: cbrgm/telegram-github-action@v1
+        with:
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CRETM_CHAT_ID }}
+          disable-web-page-preview: true
+          message: |
+            🚀 New Discussion!
+            Title: ${{ github.event.discussion.title }}
+            Discussion URL: [ссылка](${{ github.event.discussion.html_url }})
+            Author: ${{ github.event.discussion.user.login }}
+            Body:
+            ${{ github.event.discussion.body }}
+
+      - name: Send Telegram Notification (Discussion Comment)
+        if: steps.event_type.outputs.type == 'discussion_comment'
         uses: cbrgm/telegram-github-action@v1
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
