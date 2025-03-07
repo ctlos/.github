@@ -24,7 +24,7 @@ jobs:
         uses: cbrgm/telegram-github-action@v1
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          to: ${{ secrets.TELEGRAM_CRETM_CHAT_ID }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
           disable-web-page-preview: true
           message: |
             🚀 New Discussion!
@@ -39,7 +39,7 @@ jobs:
         uses: cbrgm/telegram-github-action@v1
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          to: ${{ secrets.TELEGRAM_CRETM_CHAT_ID }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
           disable-web-page-preview: true
           message: |
             🚀 New Discussion Comment!
